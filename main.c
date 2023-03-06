@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 typedef struct {
@@ -28,16 +29,53 @@ void InputStudent(Student *p){
     scanf(" %d", &p->BirthYear);
 }
 
-
-int main(){
+void Lab1(){
     Student student1;
     Student student2;
 
-    
     InputStudent(&student1);
     InputStudent(&student2);
 
     PrintStudent(&student1);
     PrintStudent(&student2);
+}
+
+void Lab2(){
+    Student studentLista[10];
+    int antal = 0;
+    
+    while(true){
+        InputStudent(&studentLista[antal]);
+        antal++;
+        if(antal == 10)
+            break;
+
+        char cont[10];
+        printf("Eter one more Yes/No?");
+        scanf(" %s", cont);
+        strupr(cont);
+        
+        if(!strcmp(cont, "YES") || !strcmp(cont, "Y")) continue;
+
+        break;
+    }
+
+    Student *oldestStudent = &studentLista[0];
+    for(int i = 0; i < antal;i++)
+        if(studentLista[i].BirthYear < oldestStudent->BirthYear)
+            oldestStudent = &studentLista[i];
+
+
+    for(int i = 0; i < antal;i++)
+        PrintStudent(&studentLista[i]);
+}
+
+
+
+
+
+
+int main(){
+    Lab2();
     return 0;
 }

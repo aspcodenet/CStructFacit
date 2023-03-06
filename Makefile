@@ -1,6 +1,6 @@
 PROG=main.exe
 CC=gcc
-CFLAGS=-g -Wall -Werror
+CFLAGS=-g -Wall -Werror -std=c99
 DEPS = 
 OBJ = main.o
  
